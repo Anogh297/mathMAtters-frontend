@@ -11,6 +11,8 @@ import Root from './components/Root/Root.jsx';
 import ProblemPage from './components/ProblemPage/ProblemPage.jsx';
 import TopicProblems from './components/ProblemPage/TopicProblems.jsx';
 import Problem from './components/ProblemPage/Problem.jsx';
+import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
+import Login from './components/Authentication/Login/Login.jsx';
 // import { Root } from 'postcss';
 
 const router = createBrowserRouter([
@@ -34,12 +36,18 @@ const router = createBrowserRouter([
         path: '/problem/:id',
         element: <Problem></Problem>
       },
+      {
+        path: '/login',
+        element: <Login></Login>,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

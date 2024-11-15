@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <div>
             
-            <Latex>We know $12^1$ + $23^1$ = {12+23}.</Latex>
+            {/* <Latex>We know $12^1$ + $23^1$ = {12+23}.</Latex> */}
             {/* <Home2></Home2> */}
             <Home2></Home2>
             <Header></Header>

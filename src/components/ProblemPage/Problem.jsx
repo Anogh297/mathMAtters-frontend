@@ -23,6 +23,24 @@ const Problem = () => {
                                 <h1 className='badge bg-yellow-100 text-yellow-600'>Number Theory</h1>
                             </div>
                         </div>
+                        <section>
+                            <h1 className='text-xl font-bold'>Algebraic Fractions</h1>
+                            <div className='mt-4'>
+                                <Latex>{`\\( \\frac{x+3}{x-1} \\)`}</Latex>
+                            </div>
+                            <div className='mt-4'>
+                                <Latex>{`\\( \\frac{a^2 - b^2}{a+b} \\)`}</Latex>
+                            </div>
+                            <div className='mt-4'>
+                                <Latex>{`\\( \\frac{\\sqrt{x+5}}{x^2 + 3x + 2} \\)`}</Latex>
+                            </div>
+                            <div className='mt-4'>
+                                <Latex>{`\\( \\frac{2x}{x^2 - 4} \\)`}</Latex>
+                            </div>
+                            <div className='mt-4'>
+                                <Latex>{`\\( \\frac{1}{x} + \\frac{1}{y} = \\frac{x+y}{xy} \\)`}</Latex>
+                            </div>
+                        </section>
                     </div>
                     <div className='w-[30%] border-[2px] mt-8 ml-4 p-3 border-gray-300'>
                         <div className=' mb-4'>
