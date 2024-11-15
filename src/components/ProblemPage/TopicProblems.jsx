@@ -16,7 +16,7 @@ const TopicProblems = () => {
                 <div className='flex justify-between font-mons  max-w-6xl mx-auto'>
                     <div className='w-[70%]'>
                         <div className='border-[0.5px] max-h-[90px] py-1 px-3 border-orange-200 mb-4'>
-                            <Link to=''>
+                            <Link to='/problem/100'>
                                 <div className='flex  mb-4  items-center  border-gray-300 w-full'>
                                     <div className=' '>
                                         <img className='h-[35px] w-[35px]' src="https://gonitzoggo.com/assets/images/icons/check2.png" alt="" />

@@ -10,6 +10,7 @@ import Home from './components/Home/Home.jsx';
 import Root from './components/Root/Root.jsx';
 import ProblemPage from './components/ProblemPage/ProblemPage.jsx';
 import TopicProblems from './components/ProblemPage/TopicProblems.jsx';
+import Problem from './components/ProblemPage/Problem.jsx';
 // import { Root } from 'postcss';
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/topicproblems/:id',
         element: <TopicProblems></TopicProblems>
+      },
+      {
+        path: '/problem/:id',
+        element: <Problem></Problem>
       },
     ],
   },
