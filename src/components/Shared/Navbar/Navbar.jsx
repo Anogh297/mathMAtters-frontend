@@ -74,7 +74,7 @@ const Navbar = () => {
 
                                 <li role="none" className="flex items-stretch">
                                     <Link
-                                        to={`/bloodbank`}
+                                        to={'/problempage'}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
                                         <span>Problems</span>
                                     </Link>

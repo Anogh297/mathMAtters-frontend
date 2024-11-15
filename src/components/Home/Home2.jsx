@@ -49,22 +49,10 @@ const Item = () => {
 
 const Home2 = () => {
 
-    
-
-
     const [currentTheme, setCurrentTheme] = useState('theme-light');
     const [startDate, setStartDate] = useState(new Date());
-
-
-  
     const [activeIndex, setActiveIndex] = useState(null);
-
     const [count, setCount] = useState(0);
-
-  
-
-
-
     return (
 
         <>

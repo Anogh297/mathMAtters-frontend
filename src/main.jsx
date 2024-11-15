@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './components/Home/Home.jsx';
 import Root from './components/Root/Root.jsx';
+import ProblemPage from './components/ProblemPage/ProblemPage.jsx';
 // import { Root } from 'postcss';
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/problempage',
+        element: <ProblemPage></ProblemPage>
       },
     ],
   },
