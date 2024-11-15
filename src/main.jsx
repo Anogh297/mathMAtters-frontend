@@ -13,6 +13,8 @@ import TopicProblems from './components/ProblemPage/TopicProblems.jsx';
 import Problem from './components/ProblemPage/Problem.jsx';
 import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import Login from './components/Authentication/Login/Login.jsx';
+import Register from './components/Authentication/Register/Register.jsx';
+
 // import { Root } from 'postcss';
 
 const router = createBrowserRouter([
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>,
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
       },
     ],
   },
