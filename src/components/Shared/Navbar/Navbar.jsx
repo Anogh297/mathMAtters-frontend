@@ -219,13 +219,13 @@ const Navbar = () => {
                                                     <strong className="block p-2 text-xs font-medium uppercase text-gray-400">
                                                         General
                                                     </strong>
-                                                    <a
-                                                        href="#"
+                                                    <Link
+                                                        to='/profile'
                                                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                                                         role="menuitem"
                                                     >
-                                                        View on Storefront
-                                                    </a>
+                                                        Dashboard
+                                                    </Link>
                                                     <a
                                                         href="#"
                                                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
