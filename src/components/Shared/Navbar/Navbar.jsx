@@ -119,6 +119,18 @@ const Navbar = () => {
                                     </a>
 
                                 </Link>
+                                <Link to='/setproblem' className="flex items-stretch">
+
+                                    <a
+                                        role="menuitem"
+                                        aria-haspopup="false"
+                                        className="flex items-center gap-2 py-4 transition-colors duration-300  hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2"
+                                        href="javascript:void(0)"
+                                    >
+                                        <span>Add Problem</span>
+                                    </a>
+
+                                </Link>
                                 <li role="none" className="relative flex lg:translate-y-7">
                                     <button
                                         onClick={toggleDropdown}
