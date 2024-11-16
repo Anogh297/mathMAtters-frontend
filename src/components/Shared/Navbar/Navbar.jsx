@@ -95,7 +95,7 @@ const Navbar = () => {
                                 </li>
 
 
-                                <Link to='/about' className="flex items-stretch">
+                                <Link to='/team' className="flex items-stretch">
 
                                     <a
                                         role="menuitem"

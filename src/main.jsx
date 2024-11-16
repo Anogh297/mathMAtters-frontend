@@ -16,6 +16,7 @@ import Login from './components/Authentication/Login/Login.jsx';
 import Register from './components/Authentication/Register/Register.jsx';
 import MathArticles from './components/MathArticles/MathArticles.jsx';
 import Leaderboard from './components/Leaderboard/Leaderboard.jsx';
+import { Teams } from './components/Teams/Teams.jsx';
 
 // import { Root } from 'postcss';
 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/leaderboard',
         element: <Leaderboard></Leaderboard>
+      },
+      {
+        path: '/team',
+        element: <Teams></Teams>
       },
     ],
   },

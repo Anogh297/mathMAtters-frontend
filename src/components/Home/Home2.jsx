@@ -63,7 +63,7 @@ const Home2 = () => {
                         <div className='flex flex-col-reverse lg:flex-row justify-between items-start mt-24'>
                             <div className='w-[1/2] text-left'>
                                 <div className='font-mons'>
-                                    <h1 className='text-[52px]  text- font-medium font-mons'>Become Better <span className='text-orange-500 text-shadow-violet'>Mathemetician</span> With<span className='text-red-500 text-shadow-red'>MathMAtters <span className='text-[14px]'><sup><Latex>We know $12^1$ + $23^1$ = {12+23}.</Latex></sup></span></span> </h1>
+                                    <h1 className='text-[52px]  text- font-medium font-mons'>Become Better <span className='text-orange-500 text-shadow-violet'>Mathematician</span> With<span className='text-red-500 text-shadow-red'>MathMAtters <span className='text-[14px]'><sup><Latex>We know $12^1$ + $23^1$ = {12+23}.</Latex></sup></span></span> </h1>
                                     <p className='py-5'>The Next Gen platform enhances assignment submission and grading, offering a seamless experience for students and instructors with efficient management</p>
 
                                     <div className=' space-x-4'>
