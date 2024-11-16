@@ -107,7 +107,7 @@ const Navbar = () => {
                                     </a>
 
                                 </Link>
-                                <Link to='dashboard/adminHome' className="flex items-stretch">
+                                <Link to='/leaderboard' className="flex items-stretch">
 
                                     <a
                                         role="menuitem"

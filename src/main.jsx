@@ -15,6 +15,7 @@ import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import Login from './components/Authentication/Login/Login.jsx';
 import Register from './components/Authentication/Register/Register.jsx';
 import MathArticles from './components/MathArticles/MathArticles.jsx';
+import Leaderboard from './components/Leaderboard/Leaderboard.jsx';
 
 // import { Root } from 'postcss';
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/matharticles',
         element: <MathArticles></MathArticles>
+      },
+      {
+        path: '/leaderboard',
+        element: <Leaderboard></Leaderboard>
       },
     ],
   },
