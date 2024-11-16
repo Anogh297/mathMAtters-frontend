@@ -18,6 +18,7 @@ import MathArticles from './components/MathArticles/MathArticles.jsx';
 import Leaderboard from './components/Leaderboard/Leaderboard.jsx';
 import { Teams } from './components/Teams/Teams.jsx';
 import SetProblem from './components/ProblemPage/SetProblem.jsx';
+import Contests from './components/Contests/Contests.jsx';
 
 // import { Root } from 'postcss';
 
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: '/setproblem',
         element: <SetProblem></SetProblem>
+      },
+      {
+        path: '/contests',
+        element: <Contests></Contests>
       },
     ],
   },

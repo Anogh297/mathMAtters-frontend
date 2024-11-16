@@ -35,6 +35,7 @@ export default {
         'blood':'url("https://i.pinimg.com/564x/92/dc/f0/92dcf039a1dcd209441f5d74ad3e16ff.jpg")',
         'revolution':'url("https://i.pinimg.com/564x/4d/fe/62/4dfe6229ef81a090745d2c1f3fbedd56.jpg")',
         'math':'url("https://i.pinimg.com/736x/13/2b/76/132b76b19578e7de685b43e8ab585b95.jpg")',
+        'contest':'url("https://i.pinimg.com/736x/3f/47/bc/3f47bc092ef0a2cd3ea6fdf402b65027.jpg")',
       },
       colors: {
         'theme-light': {
