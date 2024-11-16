@@ -14,6 +14,7 @@ import Problem from './components/ProblemPage/Problem.jsx';
 import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import Login from './components/Authentication/Login/Login.jsx';
 import Register from './components/Authentication/Register/Register.jsx';
+import MathArticles from './components/MathArticles/MathArticles.jsx';
 
 // import { Root } from 'postcss';
 
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/matharticles',
+        element: <MathArticles></MathArticles>
       },
     ],
   },

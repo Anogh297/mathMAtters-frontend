@@ -28,7 +28,7 @@ const Navbar = () => {
                                 <div className="uppercase  font-semibold flex items-center gap-2 whitespace-nowrap py-3 text-[22px] focus:outline-none lg:flex-1" >
                                     <img width="80" height="80" src="https://img.icons8.com/officel/80/math.png" alt="math" />
                                     <div className=" ">
-                                    
+
                                         <h1 className="leading-tight tracking-tighter">Math <span className="text-red-700 font-bold leading-tight tracking-tighter">MAtters</span></h1>
                                         <h1 className="text-[11px] ">Let's smash <span className="text-green-600">Ma</span><span className="text-red-600">the</span><span className="text-green-600">matics <span className="text-gray-600">-Mancester Academy</span></span></h1>
                                     </div>
@@ -75,7 +75,7 @@ const Navbar = () => {
                                 <li role="none" className="flex items-stretch">
                                     <Link
                                         to={'/problempage'}
-                                        className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
+                                        className="flex items-center py-4  border-2 border-green-400 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
                                         <span>Problems</span>
                                     </Link>
                                 </li>
@@ -88,12 +88,12 @@ const Navbar = () => {
                                 </li>
                                 <li role="none" className="flex items-stretch">
                                     <Link
-                                        to={`/blogs`}
+                                        to={`/matharticles`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
-                                        <span>Blogs</span>
+                                        <span>Resources</span>
                                     </Link>
                                 </li>
-                              
+
 
                                 <Link to='/about' className="flex items-stretch">
 

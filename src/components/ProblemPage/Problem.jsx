@@ -1,6 +1,8 @@
 import React from 'react';
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
+import Sparkle from 'react-sparkle'
+
 
 const Problem = () => {
     return (
@@ -63,7 +65,25 @@ const Problem = () => {
                             <h1 className='text-[16.5px] font-medium mt-2 mb-4 px-4'>What's Your Answer ? 🤓</h1>
                             <div className='flex  items-center px-2'>
                                 <input type="text " className='input input-md rounded-sm w-full border-[1px] border-gray-500' name="" id="" />
-                                <button className='btn btn-md border-none bg-green-200 text-green-600'>Submit</button>
+                                {/* <button className='btn btn-md border-none bg-green-200 text-green-600'>Submit</button> */}
+                                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                <button className="btn btn-md border-none bg-green-200 text-green-600" onClick={() => document.getElementById('my_modal_5').showModal()}>Submit</button>
+                                <dialog id="my_modal_5" className="modal bg-gray-400 bg-opacity-45 modal-bottom sm:modal-middle">
+                                    <div className="modal-box bg-gray-500">
+                                        <h3 className="font-bold text-2xl text-center text-gray-200">Congratulations! 🥳🥳🥳</h3>
+                                        <img className='mx-auto' width="100" height="100" src="https://img.icons8.com/water-color/100/ok.png" alt="ok" />
+                                        <div style={{ position: 'relative', backgroundColor:'red'}}>
+                                            <Sparkle />
+                                        </div>
+                                        <p className="py-4 text-gray-200 text-center">You have succesfully solved the problem</p>
+                                        <div className="modal-action">
+                                            <form method="dialog">
+                                                {/* if there is a button in form, it will close the modal */}
+                                                <button className="btn">Close</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </dialog>
                             </div>
                         </div>
                     </div>
