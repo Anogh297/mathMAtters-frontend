@@ -22,6 +22,7 @@ import Contests from './components/Contests/Contests.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import ModeratorApplication from './components/Moderator/ModeratorApplication.jsx';
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
+import SingleContest from './components/Contests/SingleContest.jsx';
 
 // import { Root } from 'postcss';
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: '/contests',
         element: <Contests></Contests>
+      },
+      {
+        path: '/contest/:id',
+        element: <SingleContest></SingleContest>
       },
       {
         path: '/profile',
