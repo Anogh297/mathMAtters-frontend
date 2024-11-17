@@ -70,36 +70,59 @@ const Navbar = () => {
                             <ul
                                 role="menubar"
                                 aria-label="Select page"
-                                className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-4 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
+                                className={`space-x-8 absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-4 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
                                     ? "visible opacity-100 backdrop-blur-sm"
                                     : "invisible opacity-0"
                                     }`}
                             >
 
-                                <li role="none" className="flex items-stretch">
+                                <li role="none" className="flex items-stretch  bg-green-50 uppercase rounded-xl  h-[64px]  text-green-500 my-auto">
                                     <Link
                                         to={'/problempage'}
-                                        className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
-                                        <span>Problems</span>
+                                        className="flex items-center pb-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
+                                        <div className="flex items-center">
+                                            <img width="32" height="32" src="https://img.icons8.com/color/32/math-book.png" alt="math-book" />
+                                            <span>Problems</span>
+                                        </div>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch">
+                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl h-[64px] text-green-500 my-auto">
                                     <Link
                                         to={`/contests`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
-                                        <span>Contest</span>
+                                        <div className="flex items-center">
+                                            <img className="mr-1" width="32" height="32" src="https://img.icons8.com/color-pixels/32/contest.png" alt="contest" />
+                                            {/* <img width="48" height="48" src="https://img.icons8.com/color/48/reference.png" alt="reference"/> */}
+                                            <span>CONTESTS</span>
+                                        </div>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch">
+                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl text-green-500 my-auto">
                                     <Link
                                         to={`/matharticles`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
-                                        <span>Resources</span>
+                                        <div className="flex items-center">
+                                            {/* <img className="mr-1" width="32" height="32" src="https://img.icons8.com/color-pixels/32/contest.png" alt="contest" /> */}
+                                            <img className="mr-1" width="32" height="32" src="https://img.icons8.com/color/32/reference.png" alt="reference" />
+                                            <span>RESOURCES</span>
+                                        </div>
+                                    </Link>
+                                </li>
+                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl text-green-500 my-auto">
+                                    <Link
+                                        to={`/matharticles`}
+                                        className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
+                                        <div className="flex items-center">
+                                            {/* <img className="mr-1" width="32" height="32" src="https://img.icons8.com/color-pixels/32/contest.png" alt="contest" /> */}
+                                            <img className="mr-1" width="32" height="32" src="https://img.icons8.com/dusk/32/user-group-man-woman.png" alt="user-group-man-woman" />
+                                            <span>ABOUT US</span>
+                                        </div>
                                     </Link>
                                 </li>
 
 
-                                <Link to='/team' className="flex items-stretch">
+
+                                {/* <Link to='/team' className="flex items-stretch">
 
                                     <a
                                         role="menuitem"
@@ -110,8 +133,8 @@ const Navbar = () => {
                                         <span>About Us</span>
                                     </a>
 
-                                </Link>
-                                <Link to='/leaderboard' className="flex items-stretch">
+                                </Link> */}
+                                {/* <Link to='/leaderboard' className="flex items-stretch">
 
                                     <a
                                         role="menuitem"
@@ -122,8 +145,8 @@ const Navbar = () => {
                                         <span>Leaderboard</span>
                                     </a>
 
-                                </Link>
-                                <Link to='/setproblem' className="flex items-stretch">
+                                </Link> */}
+                                {/* <Link to='/setproblem' className="flex items-stretch">
 
                                     <a
                                         role="menuitem"
@@ -134,7 +157,7 @@ const Navbar = () => {
                                         <span>Add Problem</span>
                                     </a>
 
-                                </Link>
+                                </Link> */}
                                 {/* <li role="none" className="relative flex lg:translate-y-7">
                                     <button
                                         onClick={toggleDropdown}
@@ -192,7 +215,7 @@ const Navbar = () => {
                                                     alt="User Avatar"
                                                     className="w-[53px] h-[53px] rounded-full hidden md:block"
                                                 />
-                                              
+
                                                 <span className="sr-only">Menu</span>
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -226,27 +249,41 @@ const Navbar = () => {
                                                     >
                                                         Dashboard
                                                     </Link>
-                                                    <a
+                                                    <Link
+                                                        to='/application'
+                                                        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                                        role="menuitem"
+                                                    >
+                                                        Become Problem Setter
+                                                    </Link>
+                                                    <Link
+                                                        to='/leaderboard'
+                                                        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                                        role="menuitem"
+                                                    >
+                                                        Leaderboard
+                                                    </Link>
+                                                    <Link
+                                                        to='/admin'
+                                                        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                                        role="menuitem"
+                                                    >
+                                                        Admin Panel
+                                                    </Link>
+                                                    <Link
                                                         href="#"
                                                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                                                         role="menuitem"
                                                     >
-                                                        View Warehouse Info
-                                                    </a>
-                                                    <a
-                                                        href="#"
+                                                        About Us
+                                                    </Link>
+                                                    <Link
+                                                        to='/asetproblem'
                                                         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                                                         role="menuitem"
                                                     >
-                                                        Duplicate Product
-                                                    </a>
-                                                    <a
-                                                        href="#"
-                                                        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                                                        role="menuitem"
-                                                    >
-                                                        Unpublish Product
-                                                    </a>
+                                                        Add Problem
+                                                    </Link>
                                                 </div>
 
                                                 <div className="p-2">
@@ -254,27 +291,54 @@ const Navbar = () => {
                                                         Danger Zone
                                                     </strong>
                                                     <form method="POST" action="#">
-                                                        <button
-                                                            type="submit"
-                                                            className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                                                            role="menuitem"
-                                                        >
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="size-4"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke="currentColor"
-                                                                strokeWidth="2"
+                                                        <Link to='/register'>
+                                                            <button
+                                                                type="submit"
+                                                                className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                                                                role="menuitem"
                                                             >
-                                                                <path
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                                                />
-                                                            </svg>
-                                                            Delete Product
-                                                        </button>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    className="size-4"
+                                                                    fill="none"
+                                                                    viewBox="0 0 24 24"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="2"
+                                                                >
+                                                                    <path
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                                    />
+                                                                </svg>
+                                                                Register
+                                                            </button>
+                                                        </Link>
+                                                    </form>
+                                                    <form method="POST" action="#">
+                                                        <Link to='/login'>
+                                                            <button
+                                                                type="submit"
+                                                                className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                                                                role="menuitem"
+                                                            >
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    className="size-4"
+                                                                    fill="none"
+                                                                    viewBox="0 0 24 24"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="2"
+                                                                >
+                                                                    <path
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                                    />
+                                                                </svg>
+                                                                Login
+                                                            </button>
+                                                        </Link>
                                                     </form>
                                                 </div>
                                             </div>

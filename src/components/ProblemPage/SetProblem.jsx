@@ -1,83 +1,9 @@
-// import React, { useEffect, useState } from 'react';
-// import useAxiosPublic from '../hooks/useAxiosPublic';
-// import Latex from 'react-latex-next';
-
-// const SetProblem = () => {
-//     const axiosPublic = useAxiosPublic();
-//     const [problem, setProblem] = useState([]);
-//     useEffect(() => {
-//         axiosPublic.get('/math')
-//             .then(res => {
-//                 setProblem(res.data);
-//             })
-//     }, [])
-const xyz =
-    `\\textbf{Fermat's Little Theorem:}
-    If $p$ is a prime number and $a$ is an integer not divisible by $p$, then:
-    $$a^{p-1} \\equiv 1 \\pmod{p}.$$
-    
-    \\textbf{Proof:} Consider the sequence:
-    $$a, 2a, 3a, \\dots, (p-1)a.$$
-    Since $a$ is not divisible by $p$, all terms in this sequence are distinct modulo $p$. Multiplying these terms together gives:
-    $$a \\cdot 2a \\cdot 3a \\cdot \\dots \\cdot (p-1)a \\equiv (p-1)! \\pmod{p}.$$
-    Factoring $a^{p-1}$ from the left side:
-    $$a^{p-1} \\cdot (p-1)! \\equiv (p-1)! \\pmod{p}.$$
-    Since $(p-1)!$ is not divisible by $p$, we can cancel it out:
-    $$a^{p-1} \\equiv 1 \\pmod{p}.$$
-
-    \\textbf{Example:} Let $p = 7$ and $a = 3$. Then:
-    $$3^{6} \\equiv 1 \\pmod{7}.$$
-
-    \\textbf{Practice Problems:}
-    1. Verify Fermat's Little Theorem for $a = 2$ and $p = 13$.
-    2. Compute $7^{11} \\pmod{13}$ using Fermat's Little Theorem.
-    3. Show that $5^{100} \\equiv 25 \\pmod{75}$.`
-
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         // console.log(e);
-//         const data = e.target.data.value;
-//         console.log(data);
-
-//         const problem = {
-//             problem: data,
-//         }
-
-
-//         axiosPublic.post('/math', problem)
-//             .then(res => {
-//                 console.log(res);
-//             })
-//             .catch(err => {
-//                 console.log(err);
-//             })
-
-//     }
-//     return (
-//         <div className='mx-auto max-w-6xl justify-center flex flex-col'>
-//             <form action="" onSubmit={handleSubmit}>
-//                 <textarea name="data" className='h-[500px] w-full border-2 border-gray-600 textarea-bordered textarea-lg' placeholder='submit problem here' id=""></textarea>
-//                 <button className='btn btn-primary'>Submit</button>
-//             </form>
-//             <div>
-//                 {/* <Latex>{xyz}</Latex> */}
-//                 {problem.map((problem, index) => <>
-//                     <Latex key={index} className='text-gray-600'>{problem.problem}</Latex>
-//                 </>)}
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default SetProblem;
-
-
-
 import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import Latex from 'react-latex-next';
 import sanitizeLatex from 'react-latex-next';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SetProblem = () => {
     const axiosPublic = useAxiosPublic();
@@ -94,51 +20,150 @@ const SetProblem = () => {
             })
             .catch((err) => console.error(err));
     }, []);
-    
+
 
     console.log(problems);
-    console.log(xyz);
+    // console.log(xyz);
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const rawData = e.target.data.value;
+        const author = e.target.author.value;
+        const category = e.target.category.value;
+        const picture = e.target.picture.value;
+        const difficulty = e.target.difficulty.value;
+        const source = e.target.source.value;
+        const title = e.target.title.value;
 
-        const sanitizedData = sanitizeLatex(rawData);
+        // const sanitizedData = sanitizeLatex(rawData);
 
         const problem = {
             problem: rawData,
+            author: author,
+            category: category,
+            picture: picture,
+            difficulty: difficulty,
+            source: source,
         };
+
+        console.log(problem);
 
         axiosPublic.post('/math', problem)
             .then((res) => {
                 console.log(res);
-                setProblems((prev) => [...prev, problem]);
+                // setProblems((prev) => [...prev, problem]);
+                toast.success('Problem submitted successfully!');
             })
             .catch((err) => console.error(err));
     };
 
     return (
-        <div className="mx-auto max-w-6xl justify-center flex flex-col">
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    name="data"
-                    className="h-[500px] w-full border-2 border-gray-600 textarea-bordered textarea-lg"
-                    placeholder="Submit a LaTeX problem here"
-                ></textarea>
-                <button type="submit" className="btn btn-primary mt-2">
-                    Submit
-                </button>
-            </form>
-            <div className="mt-4">
+        <>
+            <div className="mx-auto max-w-6xl justify-center flex flex-col font-mons">
+                <img className='w-[300px] h-[300px] m-auto rounded-2xl mt-8 mb-8' src="https://i.pinimg.com/736x/3f/1e/77/3f1e771cec6f1f5a6b6f8dbe9c7abfb6.jpg" alt="" />
+                <h1 className='text-[20px] font-medium text-blue-400 text-center mb-3'>Set Problem in LaTeX format</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Title</span>
+                        </label>
+                        <input
+                            type="text"
+                            name='title'
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Enter problem title"
+                        />
+                    </div>
+
+                    {/* Difficulty */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Difficulty</span>
+                        </label>
+                        <input
+                            name='difficulty'
+                            type="text"
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Easy, Medium, Hard"
+                        />
+                    </div>
+
+                    {/* Source */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Source</span>
+                        </label>
+                        <input
+                            name='source'
+                            type="text"
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Enter source (if any)"
+                        />
+                    </div>
+
+                    {/* Author */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Author</span>
+                        </label>
+                        <input
+                            name='author'
+                            type="text"
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Enter author name"
+                        />
+                    </div>
+
+                    {/* Picture Link */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Picture Link</span>
+                        </label>
+                        <input
+                            name='picture'
+                            type="text"
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Enter picture link (if applicable)"
+                        />
+                    </div>
+
+                    {/* Category */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Category</span>
+                        </label>
+                        <input
+                            name='category'
+                            type="text"
+                            className=" mb-8 input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="e.g., Algebra, Geometry"
+                        />
+                    </div>
+                    <textarea
+                        name="data"
+                        className="h-[500px] w-full border-2 border-gray-600 textarea-bordered textarea-lg"
+                        placeholder="Submit a LaTeX problem here"
+                    ></textarea>
+                    <button type="submit" className="btn btn-primary mt-2">
+                        Submit
+                    </button>
+
+                </form>
+                <div className="mt-4">
                 {problems.map((problem, index) => (
                     <div key={index} className="mb-4 text-gray-600">
                         <Latex>{problem.problem}</Latex>
-                        {/* <Latex>{xyz}</Latex> */}
+                        
                     </div>
                 ))}
             </div>
-        </div>
+
+            </div>
+            <ToastContainer />
+        </>
+
     );
 };
 

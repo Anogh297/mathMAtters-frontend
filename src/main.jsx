@@ -20,6 +20,8 @@ import { Teams } from './components/Teams/Teams.jsx';
 import SetProblem from './components/ProblemPage/SetProblem.jsx';
 import Contests from './components/Contests/Contests.jsx';
 import Profile from './components/Profile/Profile.jsx';
+import ModeratorApplication from './components/Moderator/ModeratorApplication.jsx';
+import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 
 // import { Root } from 'postcss';
 
@@ -75,6 +77,14 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile></Profile>
+      },
+      {
+        path: '/application',
+        element: <ModeratorApplication></ModeratorApplication>
+      },
+      {
+        path: '/admin',
+        element: <AdminDashboard></AdminDashboard>
       },
     ],
   },

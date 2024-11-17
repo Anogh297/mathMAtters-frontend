@@ -1,48 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'katex/dist/katex.min.css';
-import Latex from 'react-latex-next';
+
 import Sparkle from 'react-sparkle'
+import { useParams } from 'react-router-dom';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import Latex from 'react-latex-next';
 
 
 const Problem = () => {
+    const [problem, setProblem] = useState([]);
+    const axiosPublic = useAxiosPublic();
+    const { id } = useParams();
+    console.log(id);
+    useEffect(() => {
+        axiosPublic.get('/math')
+            .then((res) => {
+                const allData = res.data;
+                const processedProblems = allData.map((p) => ({
+                    ...p,
+                    problem: p.problem.replace(/\\\\/g, '\\'),
+                }));
+
+
+                const specificProblem = processedProblems.find(x => x._id == id);
+                // const specificProblem = allData.find(x => x._id == id);
+                if (specificProblem) {
+                    setProblem(specificProblem);
+                }
+            })
+            .catch((err) => console.error(err));
+    }, []);
+
+
+    console.log(problem);
+
     return (
         <>
             <div className='max-w-6xl mx-auto font-mons'>
                 <div className='flex justify-between'>
+
                     <div className='border-[1px] w-[70%] mt-8 border-gray-400 p-3'>
                         <div className='mb-3'>
-                            <h1 className='text-2xl font-medium'>Game Of Remainders</h1>
+                            <h1 className='text-2xl font-medium'>{problem?.title}</h1>
                         </div>
                         <div className='max-w-6xl mx-auto p-4'>
-                            <Latex>
-                                {`$2^1 + 2^2 + 2^3 + \\dots + 2^{2019} + 2^{2020} = C$`}
-                            </Latex>
-                            <h1 className='mt-4'>
-                                If <Latex>{`$C$`}</Latex> is divided by 6, what will be the remainder?
-                            </h1>
+
+                            <Latex>{problem?.problem}</Latex>
                             <div className='mt-12'>
-                                <h1 className='badge bg-green-100 text-green-600 mr-6'>BdMO Shortlists 2024</h1>
-                                <h1 className='badge bg-yellow-100 text-yellow-600'>Number Theory</h1>
+                                <h1 className='badge bg-green-100 text-green-600 mr-6'>{problem?.source}</h1>
+                                <h1 className='badge bg-yellow-100 text-yellow-600'>{problem?.category}</h1>
                             </div>
                         </div>
-                        <section>
-                            <h1 className='text-xl font-bold'>Algebraic Fractions</h1>
-                            <div className='mt-4'>
-                                <Latex>{`\\( \\frac{x+3}{x-1} \\)`}</Latex>
-                            </div>
-                            <div className='mt-4'>
-                                <Latex>{`\\( \\frac{a^2 - b^2}{a+b} \\)`}</Latex>
-                            </div>
-                            <div className='mt-4'>
-                                <Latex>{`\\( \\frac{\\sqrt{x+5}}{x^2 + 3x + 2} \\)`}</Latex>
-                            </div>
-                            <div className='mt-4'>
-                                <Latex>{`\\( \\frac{2x}{x^2 - 4} \\)`}</Latex>
-                            </div>
-                            <div className='mt-4'>
-                                <Latex>{`\\( \\frac{1}{x} + \\frac{1}{y} = \\frac{x+y}{xy} \\)`}</Latex>
-                            </div>
-                        </section>
+
                     </div>
                     <div className='w-[30%] border-[2px] mt-8 ml-4 p-3 border-gray-300'>
                         <div className=' mb-4'>
@@ -72,7 +81,7 @@ const Problem = () => {
                                     <div className="modal-box bg-gray-500">
                                         <h3 className="font-bold text-2xl text-center text-gray-200">Congratulations! 🥳🥳🥳</h3>
                                         <img className='mx-auto' width="100" height="100" src="https://img.icons8.com/water-color/100/ok.png" alt="ok" />
-                                        <div style={{ position: 'relative', backgroundColor:'red'}}>
+                                        <div style={{ position: 'relative', backgroundColor: 'red' }}>
                                             <Sparkle />
                                         </div>
                                         <p className="py-4 text-gray-200 text-center">You have succesfully solved the problem</p>

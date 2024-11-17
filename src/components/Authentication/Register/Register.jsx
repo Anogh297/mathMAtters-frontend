@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-// import useAxiosPublic from '../hooks/useAxiosPublic';
-// import { AuthContext } from '../Authprovider/AuthProvider';
+
 import { getAuth, updateProfile } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
-// import app from '../firebase/firebase.config';
+
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
