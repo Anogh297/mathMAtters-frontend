@@ -1,64 +1,66 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
 const SingleContest = () => {
-    const Ref = useRef(null);
-    const [timer, setTimer] = useState("00:00:00");
-    const navigate =  useNavigate();
 
-    const getTimeRemaining = (e) => {
-        const total = Date.parse(e) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-        return { total, hours, minutes, seconds };
-    };
+    const contestStartTime = new Date('2024-11-18T20:50:00');
+    const contestDuration = 0.5 * 60 * 1000;
+    const contestEndTime = new Date(contestStartTime.getTime() + contestDuration);
 
-    const startTimer = (e) => {
-        let { total, hours, minutes, seconds } = getTimeRemaining(e);
-        if (total >= 0) {
-            setTimer(
-                (hours > 9 ? hours : "0" + hours) +
-                    ":" +
-                    (minutes > 9 ? minutes : "0" + minutes) +
-                    ":" +
-                    (seconds > 9 ? seconds : "0" + seconds)
-            );
-        }
-    };
-
-    const clearTimer = (e) => {
-        setTimer("00:00:15"); 
-        if (Ref.current) clearInterval(Ref.current);
-        const id = setInterval(() => {
-            startTimer(e);
-        }, 1000);
-        Ref.current = id;
-    };
-
-    const getDeadTime = () => {
-        let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + 15); // Set the timer to 1 minute
-        return deadline;
-    };
+    const [status, setStatus] = useState('waiting');
+    const [timeLeft, setTimeLeft] = useState('');
 
     useEffect(() => {
-        clearTimer(getDeadTime());
-    }, []);
+        const updateTimer = () => {
+            const currentTime = new Date();
 
-    const onClickReset = () => {
-        clearTimer(getDeadTime());
-    };
+            if (currentTime < contestStartTime) {
+
+                const diff = contestStartTime - currentTime;
+                updateTimeLeft(diff);
+                setStatus('waiting');
+            } else if (currentTime >= contestStartTime && currentTime < contestEndTime) {
+
+                const diff = contestEndTime - currentTime;
+                updateTimeLeft(diff);
+                setStatus('running');
+            } else {
+
+                setTimeLeft('');
+                setStatus('ended');
+            }
+        };
+
+        const updateTimeLeft = (diff) => {
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            setTimeLeft(`${minutes}m ${seconds}s`);
+        };
+
+        const timer = setInterval(updateTimer, 1000);
+
+        return () => clearInterval(timer);
+    }, [contestStartTime, contestEndTime]);
 
     return (
-        <div className="text-center mx-auto font-mons">
-            <h1>MathMatters</h1>
-            <h3>Contest Starts in</h3>
-            <h2>{timer}</h2>
-            {timer == "00:00:00" ?<><img src="https://i.pinimg.com/736x/2d/29/7d/2d297d9d8bf128d1bd63436be8432131.jpg" alt="" /></>:<>Hello World</>}
-            <button onClick={onClickReset} className="btn btn-primary">
-                Reset
-            </button>
+        <div>
+            {status === 'waiting' && (
+                <div>
+                    <h1>The contest will start at 8:00 AM on 25th November.</h1>
+                    {timeLeft && <p>Time remaining to start: {timeLeft}</p>}
+                </div>
+            )}
+            {status === 'running' && (
+                <div>
+                    <h1>The contest is live! 🎉</h1>
+                    <p>Time remaining: {timeLeft}</p>
+
+                </div>
+            )}
+            {status === 'ended' && (
+                <div>
+                    <h1>The contest has ended. Thank you for participating!</h1>
+                </div>
+            )}
         </div>
     );
 };
