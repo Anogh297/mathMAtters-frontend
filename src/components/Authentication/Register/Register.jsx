@@ -76,6 +76,7 @@ const Register = () => {
                     name: res.user?.displayName,
                     email: res.user?.email,
                     role: 'User',
+                    
                 }
 
                 axiosPublic.post('/users', userInfo)
