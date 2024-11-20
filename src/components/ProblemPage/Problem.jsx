@@ -105,17 +105,36 @@
 // export default Problem;
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
 import Sparkle from 'react-sparkle';
 import { useParams } from 'react-router-dom';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Problem = () => {
     const [problem, setProblem] = useState(null);
     const axiosPublic = useAxiosPublic();
     const { id } = useParams();
+    const { user } = useContext(AuthContext);
+
+    const [currentUser, setCurrentUser] = useState([]);
+    useEffect(() => {
+        axiosPublic.get('/users')
+            .then(res => {
+                console.log(res);
+                const alldata = res.data;
+                const specificUser = alldata.find((x) => x.email === user.email);
+                if (specificUser) {
+                    setCurrentUser(specificUser);
+                }
+            })
+    }, [])
+
+    console.log("current user   --->"  ,currentUser);
+
 
     // Preprocess Latex string
     const preprocessLatex = (text) => {
@@ -146,6 +165,46 @@ const Problem = () => {
 
     if (!problem) {
         return <div>Loading...</div>;
+    }
+    const handleSubmission = (e) => {
+        e.preventDefault();
+        const answer = e.target.answer.value;
+        const { solution, title } = problem;
+        console.log(solution);
+        const sol = 2;
+
+        if (parseInt(solution) === parseInt(answer)) {
+            console.log("Correct");
+            console.log(`user id for the submission ---> ${currentUser.email}`)
+            axiosPublic.post(`/users/${currentUser?.email}/solved-problems`, title)
+                .then(res => {
+                    console.log(res);
+                    if (res.status === 200) {
+                        console.log("succesfully inserted to the database!!!");
+                    }
+                })
+                .catch((err) => console.error(err));
+            Swal.fire({
+                text: "Correct",
+                icon: "success",
+                timer: 1700,
+                color: "green",
+            })
+        } else {
+            console.log("Correct");
+            Swal.fire({
+                text: "Wrong Answer",
+                icon: "error",
+                timer: 1700,
+                focusCancel: true,
+                animation: true,
+                color: "red",
+                buttonsStyling: true,
+                confirmButtonText: "Close",
+                imageUrl: "https://img.icons8.com/color/48/000000/sad-face.png",
+            })
+        }
+        console.log("Answer sumittted");
     }
 
     return (
@@ -181,32 +240,34 @@ const Problem = () => {
                     </div>
                     <div>
                         <h1 className='text-[16.5px] font-medium mt-2 mb-4 px-4'>What's Your Answer ? 🤓</h1>
-                        <div className='flex  items-center px-2'>
-                            <input type="text " className='input input-md rounded-sm w-full border-[1px] border-gray-500' name="" id="" />
-                            {/* <button className='btn btn-md border-none bg-green-200 text-green-600'>Submit</button> */}
-                            {/* Open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn btn-md border-none bg-green-200 text-green-600" onClick={() => document.getElementById('my_modal_5').showModal()}>Submit</button>
-                            <dialog id="my_modal_5" className="modal bg-gray-400 bg-opacity-45 modal-bottom sm:modal-middle">
-                                <div className="modal-box bg-gray-500">
-                                    <h3 className="font-bold text-2xl text-center text-gray-200">Congratulations! 🥳🥳🥳</h3>
-                                    <img className='mx-auto' width="100" height="100" src="https://img.icons8.com/water-color/100/ok.png" alt="ok" />
-                                    <div style={{ position: 'relative', backgroundColor: 'red' }}>
-                                        <Sparkle />
+                        <form action="" onSubmit={handleSubmission}>
+                            <div className='flex  items-center px-2'>
+                                <input type="text " className='input input-md rounded-sm w-full border-[1px] border-gray-500' name="answer" id="" />
+
+                                <button className="btn btn-md border-none bg-green-200 text-green-600" onClick={() => document.getElementById('my_modal_5').showModal()}>Submit</button>
+                                <dialog id="my_modal_4" className="modal bg-gray-400 bg-opacity-45 modal-bottom sm:modal-middle">
+                                    <div className="modal-box bg-gray-500">
+                                        <h3 className="font-bold text-2xl text-center text-gray-200">Congratulations! 🥳🥳🥳</h3>
+                                        <img className='mx-auto' width="100" height="100" src="https://img.icons8.com/water-color/100/ok.png" alt="ok" />
+                                        <div style={{ position: 'relative', backgroundColor: 'red' }}>
+                                            <Sparkle />
+                                        </div>
+                                        <p className="py-4 text-gray-200 text-center">You have succesfully solved the problem</p>
+                                        <div className="modal-action">
+                                            <form method="dialog">
+
+                                                <button className="btn">Close</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <p className="py-4 text-gray-200 text-center">You have succesfully solved the problem</p>
-                                    <div className="modal-action">
-                                        <form method="dialog">
-                                            {/* if there is a button in form, it will close the modal */}
-                                            <button className="btn">Close</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </dialog>
-                        </div>
+                                </dialog>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            );
+        </div>
+    );
 };
 
-            export default Problem;
+export default Problem;
