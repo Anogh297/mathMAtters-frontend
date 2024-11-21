@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrentContest from './CurrentContest';
 
 const Contests = () => {
     return (
@@ -67,6 +68,7 @@ const Contests = () => {
                     </div>
                 </div>
             </div>
+            <CurrentContest></CurrentContest>
         </>
     );
 };

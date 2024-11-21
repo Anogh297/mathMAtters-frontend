@@ -5,26 +5,31 @@ export const Footer = () => {
     <div className="px-4 font-mons pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
-          <Link to='/'>
-            <div className="uppercase  font-semibold flex items-center gap-2 whitespace-nowrap py-3  focus:outline-none lg:flex-1" >
-              <img className="w-10 h-10 md:w-20 md:h-20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/100/external-defence-martial-arts-flaticons-lineal-color-flat-icons.png" alt="external-defence-martial-arts-flaticons-lineal-color-flat-icons" />
-              <div className=" ">
-                <h1 className="leading-tight tracking-tighter text-[12px] lg:text-[22px]">Stand Against <span className="text-red-700 font-bold leading-tight tracking-tighter">Inhumanity</span></h1>
-                <h1 className="text-[7px] md:text-[11px] ">United for better <span className="text-green-600">Ban</span><span className="text-red-600">glad</span><span className="text-green-600">fesh</span></h1>
+          <Link to="/">
+            <div className="uppercase font-semibold flex items-center gap-2 whitespace-nowrap py-3 focus:outline-none lg:flex-1">
+              <img
+                className="w-10 h-10 md:w-20 md:h-20"
+                src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/100/external-defence-martial-arts-flaticons-lineal-color-flat-icons.png"
+                alt="Math Matters logo"
+              />
+              <div>
+                <h1 className="leading-tight tracking-tighter text-[12px] lg:text-[22px]">
+                  Math <span className="text-red-700 font-bold leading-tight tracking-tighter">Matters</span>
+                </h1>
+                <h1 className="text-[8px] md:text-[11px]">
+                  Empowering minds through mathematics.
+                </h1>
               </div>
             </div>
           </Link>
           <div className="mt-6 lg:max-w-sm">
             <p className="text-sm text-gray-800 mt-4 leading-relaxed">
-              Shape a brighter future and contribute to meaningful change through our impactful volunteer initiatives. Our dedicated volunteers play a crucial role in advancing our mission, bringing their unique skills and compassionate hearts to every project. .
+              Join us in our mission to make mathematics accessible and enjoyable for everyone. Our platform connects learners, educators, and math enthusiasts to create a positive, supportive community.
             </p>
-
           </div>
         </div>
         <div className="space-y-2 text-sm">
-          <p className="text-base font-bold tracking-wide text-gray-900">
-            Contacts
-          </p>
+          <p className="text-base font-bold tracking-wide text-gray-900">Contact Us</p>
           <div className="flex">
             <p className="mr-1 text-gray-800">Phone:</p>
             <a
@@ -39,12 +44,12 @@ export const Footer = () => {
           <div className="flex">
             <p className="mr-1 text-gray-800">Email:</p>
             <a
-              href="mailto:info@lorem.mail"
+              href="mailto:info@mathmatters.com"
               aria-label="Our email"
               title="Our email"
               className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
-              info@lorem.mail
+              info@mathmatters.com
             </a>
           </div>
           <div className="flex">
@@ -62,9 +67,7 @@ export const Footer = () => {
           </div>
         </div>
         <div>
-          <span className="text-base font-bold tracking-wide text-gray-900">
-            Social
-          </span>
+          <span className="text-base font-bold tracking-wide text-gray-900">Social</span>
           <div className="flex items-center mt-1 space-x-3">
             <a
               href="/"
@@ -88,45 +91,14 @@ export const Footer = () => {
               className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
-                <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
+                <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.76v2.306h3.446l-0.447,4h-3V24h5c1.105,0,2-0.895,2-2V2 C24,0.895,23.105,0,22,0z" />
               </svg>
             </a>
           </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Follow out social media profiles accross all paltforms
-          </p>
         </div>
       </div>
-      <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-        <p className="text-sm text-gray-600">
-          © Copyright 2024 <span className="font-semibold">Stand Against Inhumanity</span>. All rights reserved.
-        </p>
-        <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-          <li>
-            <a
-              href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-            >
-              F.A.Q
-            </a>
-          </li>
-          <li>
-            <a
-              href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-            >
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a
-              href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-            >
-              Terms &amp; Conditions
-            </a>
-          </li>
-        </ul>
+      <div className="py-5 border-t border-gray-200 flex justify-between">
+        <p className="text-xs text-gray-800">© Math-Matters. All rights reserved.</p>
       </div>
     </div>
   );

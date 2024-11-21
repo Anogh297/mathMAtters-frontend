@@ -76,7 +76,7 @@ const Navbar = () => {
                                     }`}
                             >
 
-                                <li role="none" className="flex items-stretch  bg-green-50 uppercase rounded-xl  h-[64px]  text-green-500 my-auto">
+                                <li role="none" className="flex items-stretch    uppercase h-[40px]    text-green-500 my-auto">
                                     <Link
                                         to={'/problempage'}
                                         className="flex items-center pb-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
@@ -86,7 +86,7 @@ const Navbar = () => {
                                         </div>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl h-[64px] text-green-500 my-auto">
+                                <li role="none" className="flex items-stretch    rounded-xl h-[48px]  text-green-500 my-auto">
                                     <Link
                                         to={`/contests`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
@@ -97,7 +97,7 @@ const Navbar = () => {
                                         </div>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl text-green-500 my-auto">
+                                <li role="none" className="flex items-stretch    rounded-xl h-[48px] text-green-500 my-auto">
                                     <Link
                                         to={`/matharticles`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
@@ -108,7 +108,7 @@ const Navbar = () => {
                                         </div>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch  bg-green-50 rounded-xl text-green-500 my-auto">
+                                <li role="none" className="flex items-stretch    rounded-xl h-[48px] text-green-500 my-auto">
                                     <Link
                                         to={`/matharticles`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
@@ -119,88 +119,11 @@ const Navbar = () => {
                                         </div>
                                     </Link>
                                 </li>
-
-
-
-                                {/* <Link to='/team' className="flex items-stretch">
-
-                                    <a
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2"
-                                        href="javascript:void(0)"
-                                    >
-                                        <span>About Us</span>
-                                    </a>
-
-                                </Link> */}
-                                {/* <Link to='/leaderboard' className="flex items-stretch">
-
-                                    <a
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        className="flex items-center gap-2 py-4 transition-colors duration-300  hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2"
-                                        href="javascript:void(0)"
-                                    >
-                                        <span>Leaderboard</span>
-                                    </a>
-
-                                </Link> */}
-                                {/* <Link to='/setproblem' className="flex items-stretch">
-
-                                    <a
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        className="flex items-center gap-2 py-4 transition-colors duration-300  hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2"
-                                        href="javascript:void(0)"
-                                    >
-                                        <span>Add Problem</span>
-                                    </a>
-
-                                </Link> */}
-                                {/* <li role="none" className="relative flex lg:translate-y-7">
-                                    <button
-                                        onClick={toggleDropdown}
-                                        className="flex btn btn-sm bg-green-100 text-green-500 lg:ml-12 items-center transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none lg:px-2"
-                                    >
-                                        Account
-                                    </button>
-                                    {isOpen && (
-                                        <ul className="absolute right-0 mt-2 w-[200px] p-3 bg-white border border-gray-300 rounded shadow-lg">
-                                            <li role="none" className="flex">
-
-                                                <Link
-                                                    to={`/login`}
-                                                    className="flex btn w-full btn-sm text-green-500 items-center px-4 py-2 transition-colors duration-300 hover:bg-gray-100 focus:outline-none"
-                                                >
-
-                                                    <span>Login</span>
-                                                </Link>
-                                            </li>
-                                            <li role="none" className="flex">
-                                                <Link
-                                                    to={`/register`}
-                                                    className="flex w-full mt-2 btn btn-sm text-green-500 items-center px-4 py-2 transition-colors duration-300 hover:bg-gray-100 focus:outline-none"
-                                                >
-                                                    <span>Register</span>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    )}
-                                </li> */}
-
                             </ul>
                             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
                                 {/*        <!-- Avatar --> */}
                                 <div className="relative inline-flex items-center justify-center text-white">
-                                    {/* Avatar */}
-                                    {/* <img
-                                        src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/practice.webp"
-                                        alt="User Avatar"
-                                        className="w-[53px] h-[53px] rounded-full hidden md:block"
-                                    /> */}
-
-                                    {/* Dropdown trigger */}
+                              
                                     <div className="relative">
                                         <div className="inline-flex items-center overflow-hidden rounded-md  bg-white">
                                             <a
@@ -358,3 +281,5 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+
