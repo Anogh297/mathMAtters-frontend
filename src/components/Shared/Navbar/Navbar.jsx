@@ -110,7 +110,7 @@ const Navbar = () => {
                                 </li>
                                 <li role="none" className="flex items-stretch    rounded-xl h-[48px] text-green-500 my-auto">
                                     <Link
-                                        to={`/matharticles`}
+                                        to={`/aboutus`}
                                         className="flex items-center py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-2">
                                         <div className="flex items-center">
                                             {/* <img className="mr-1" width="32" height="32" src="https://img.icons8.com/color-pixels/32/contest.png" alt="contest" /> */}

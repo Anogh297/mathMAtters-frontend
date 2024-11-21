@@ -23,6 +23,7 @@ import Profile from './components/Profile/Profile.jsx';
 import ModeratorApplication from './components/Moderator/ModeratorApplication.jsx';
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 import SingleContest from './components/Contests/SingleContest.jsx';
+import { About } from './components/Teams/About.jsx';
 
 // import { Root } from 'postcss';
 
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: '/application',
         element: <ModeratorApplication></ModeratorApplication>
+      },
+      {
+        path: '/aboutus',
+        element: <About></About>
       },
       {
         path: '/admin',
