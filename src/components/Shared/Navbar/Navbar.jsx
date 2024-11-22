@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 // import { AuthContext } from "../../Authprovider/AuthProvider";
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const toggleDropdown2 = () => {
         setIsDropdownOpen2((prev) => !prev);
@@ -123,7 +125,7 @@ const Navbar = () => {
                             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
                                 {/*        <!-- Avatar --> */}
                                 <div className="relative inline-flex items-center justify-center text-white">
-                              
+
                                     <div className="relative">
                                         <div className="inline-flex items-center overflow-hidden rounded-md  bg-white">
                                             <a
@@ -133,11 +135,14 @@ const Navbar = () => {
 
                                             </a>
                                             <button onClick={toggleDropdown2}>
-                                                <img
-                                                    src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/practice.webp"
-                                                    alt="User Avatar"
-                                                    className="w-[53px] h-[53px] rounded-full hidden md:block"
-                                                />
+                                                <div className="flex space-x-2 items-center text-black">
+                                                    <h1 className="uppercase">{user?.displayName}</h1>
+                                                    <img
+                                                        src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/practice.webp"
+                                                        alt="User Avatar"
+                                                        className="w-[53px] h-[53px] rounded-full hidden md:block"
+                                                    />
+                                                </div>
 
                                                 <span className="sr-only">Menu</span>
                                                 <svg

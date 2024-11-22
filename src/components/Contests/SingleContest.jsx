@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const SinglePageContest = () => {
-    // Contest start and duration
-    const contestStartTime = new Date("2024-11-19T17:58:00");
-    const contestDuration = 2 * 60 * 1000; // 5 minutes in milliseconds
+
+
+    const axiosPublic = useAxiosPublic();
+    const { user } = useContext(AuthContext);
+
+    const contestStartTime = new Date("2024-11-22T21:05:00");
+    const contestDuration = 2 * 60 * 1000; // 5 minutes
     const contestEndTime = new Date(contestStartTime.getTime() + contestDuration);
     const [pass, setPass] = useState(false);
     const [r, sr] = useState(false);
@@ -11,9 +19,9 @@ const SinglePageContest = () => {
 
     const [status, setStatus] = useState("waiting"); // 'waiting', 'running', 'ended'
     const [timeLeft, setTimeLeft] = useState("");
-    const [submissions, setSubmissions] = useState([]); // Store submissions here
-    const [user, setUser] = useState("");
-    const [answers, setAnswers] = useState({}); // Store answers for multiple questions 
+    const [submissions, setSubmissions] = useState([]); // Storing submissions 
+    const [USER, setUSER] = useState("");
+    const [answers, setAnswers] = useState({}); // Storing answers for the  questions 
 
     const handlePass = (e) => {
         e.preventDefault();
@@ -24,11 +32,7 @@ const SinglePageContest = () => {
 
     }
 
-    const handleReg = (e) => {
-        e.preventDefault();
-        console.log('pressed');
-        sr(true);
-    }
+    
 
     // Contest JSON Data
     const contestData = {
@@ -65,23 +69,23 @@ const SinglePageContest = () => {
         },
     };
 
-    // Timer Update
+
     useEffect(() => {
         const updateTimer = () => {
             const currentTime = new Date();
 
             if (currentTime < contestStartTime) {
-                // Contest hasn't started yet
+                // hasn't started yet
                 const diff = contestStartTime - currentTime;
                 updateTimeLeft(diff);
                 setStatus("waiting");
             } else if (currentTime >= contestStartTime && currentTime < contestEndTime) {
-                // Contest is running
+                //  running
                 const diff = contestEndTime - currentTime;
                 updateTimeLeft(diff);
                 setStatus("running");
             } else {
-                // Contest has ended
+                //  ended
                 setTimeLeft("");
                 setStatus("ended");
             }
@@ -103,7 +107,7 @@ const SinglePageContest = () => {
 
     //  Submission
     const handleSubmission = () => {
-        if (user) {
+        if (USER) {
             const score = Object.keys(answers).reduce((acc, questionId) => {
                 const problem = contestData.contest.problems.find(
                     (p) => p.id === parseInt(questionId)
@@ -114,15 +118,36 @@ const SinglePageContest = () => {
                 return acc;
             }, 0);
 
-            const newSubmission = { user, score };
+            const newSubmission = { USER, score };
             setSubmissions((prevSubmissions) => [...prevSubmissions, newSubmission]);
             setAnswers({});
-            setUser("");
+            setUSER("");
         }
     };
 
 
     const sortedSubmissions = submissions.sort((a, b) => b.score - a.score);
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log('pressed');
+
+        
+        const contestant = {
+            email: user?.email,
+            name: user?.displayName,
+        }
+
+        console.log(contestant);
+        axiosPublic.patch(`/contests/673cc45f6a0f519a48b4335d/contestants`,{ contestant})
+            .then(res => {
+                console.log(res.data)
+                if(res.data.status === "success") {
+                    toast.success('Registered successfully + Submitted to server!');
+                }
+            })
+            .catch(error => console.error(error))
+    }
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 font-mons">
@@ -137,7 +162,7 @@ const SinglePageContest = () => {
                 {status === "waiting" && (
                     <div className="text-center">
                         <p className="text-xl font-medium text-gray-700">
-                            Time remaining to start: {timeLeft}
+                            Starts in : {timeLeft}
                         </p>
                     </div>
                 )}
@@ -151,8 +176,8 @@ const SinglePageContest = () => {
                                 type="text"
                                 className="input input-bordered w-full mb-4"
                                 placeholder="Your Name"
-                                value={user}
-                                onChange={(e) => setUser(e.target.value)}
+                                value={USER}
+                                onChange={(e) => setUSER(e.target.value)}
                             />
                             {contestData.contest.problems.map((problem) => (
                                 <div key={problem.id} className="mb-6">
@@ -191,7 +216,7 @@ const SinglePageContest = () => {
                 )}
 
                 <div className="font-mons text-center mx-auto">
-                    <form action="" onSubmit={handlePass}>
+                    {/* <form action="" onSubmit={handlePass}>
 
                         {
                             pass ? <>
@@ -214,6 +239,11 @@ const SinglePageContest = () => {
                                     <input type="text " placeholder="passkey" name="pass" id="" />
                                 </>
                         }
+                    </form> */}
+                    <form className="text-[18px] btn  font-semibold text-blue-500" onSubmit={handleRegister} >
+                        <button>
+                        Register
+                        </button>
                     </form>
 
                 </div>
@@ -228,7 +258,7 @@ const SinglePageContest = () => {
                             <thead>
                                 <tr>
                                     <th>Rank</th>
-                                    <th>User</th>
+                                    <th>USER</th>
                                     <th>Score</th>
                                 </tr>
                             </thead>
@@ -236,7 +266,7 @@ const SinglePageContest = () => {
                                 {sortedSubmissions.map((submission, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{submission.user}</td>
+                                        <td>{submission.USER}</td>
                                         <td>{submission.score}</td>
                                     </tr>
                                 ))}
@@ -245,6 +275,7 @@ const SinglePageContest = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
