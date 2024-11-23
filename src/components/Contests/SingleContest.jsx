@@ -10,7 +10,7 @@ const SinglePageContest = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
 
-    const contestStartTime = new Date("2024-11-22T23:07:00");
+    const contestStartTime = new Date("2024-11-23T01:18:00");
     const contestDuration = 35 * 60 * 1000; // 5 minutes
     const contestEndTime = new Date(contestStartTime.getTime() + contestDuration);
     const [pass, setPass] = useState(false);
@@ -241,19 +241,22 @@ const SinglePageContest = () => {
 
                                         <form action="" className="text-black" onSubmit={(e) => handleSubmission2(problem, e)
                                         }>
-                                            <input
-                                                type="text"
-                                                className="input input-bordered w-full mt-2"
-                                                placeholder="Your Answer"
-                                            />
+                                            <div className="flex space-x-2 items-center m-auto">
+                                                <input
+                                                    type="text"
+                                                    className="input input-bordered w-full mt-2"
+                                                    placeholder="Your Answer"
+                                                />
+                                                <button className="btn btn-primary"> Submit</button>
+                                            </div>
                                         </form>
                                     </div>
 
                                 ))
                             }
-                            <button className="btn btn-primary w-full" onClick={handleSubmission}>
+                            {/* <button className="btn btn-primary w-full" onClick={handleSubmission}>
                                 Submit
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 )}
