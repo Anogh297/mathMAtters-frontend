@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CurrentContest = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-  
+
 
       {/* Content Section */}
       <main className="max-w-7xl font-mons mx-auto mt-8 p-4 bg-white rounded shadow-md">
@@ -20,7 +21,9 @@ const CurrentContest = () => {
           {/* Right Section */}
           <div className="w-full md:w-2/5">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Calibration Round #60
+              <Link to="/contest/100">
+                Calibration Round #60
+              </Link>
             </h2>
             <p className="text-gray-600">
               The contest will start on{" "}

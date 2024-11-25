@@ -10,7 +10,7 @@ const SinglePageContest = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
 
-    const contestStartTime = new Date("2024-11-23T01:18:00");
+    const contestStartTime = new Date("2024-11-25T18:00:00");
     const contestDuration = 35 * 60 * 1000; // 5 minutes
     const contestEndTime = new Date(contestStartTime.getTime() + contestDuration);
     const [pass, setPass] = useState(false);
@@ -67,7 +67,6 @@ const SinglePageContest = () => {
             ],
         },
     };
-
 
     useEffect(() => {
         const updateTimer = () => {
@@ -163,9 +162,9 @@ const SinglePageContest = () => {
 
     const handleSubmission2 = (e, pro) => {
         e.preventDefault();
-        const problem = pro;
+        // const problem = pro;
         const answer = parseInt(e.target.answer.value);
-        const pr_ans = parseInt(pro.asnwer);
+        const pr_ans = parseInt(pro.answer);
         console.log('answer', answer);
 
 
@@ -182,10 +181,10 @@ const SinglePageContest = () => {
                 .then(res => {
                     console.log(res.data)
                     if (res.data.status === "success") {
-                        // toast.success('Registered successfully + Submitted to server!');
+                        
                         console.log("correct answer + pinged the server");
                     } else if (res.data.status == "error") {
-                        // toast.error('Already Registered for the contest.');
+                        
                         console.log("useless conditioning mate dont worry !");
                     }
                 })
@@ -203,7 +202,7 @@ const SinglePageContest = () => {
     // console.log('results i got ', contest);
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 font-mons">
-            <div className="w-full max-w-4xl p-6 bg-white rounded-xl shadow-lg">
+            <div className="w-full max-w-6xl p-6 bg-white rounded-xl shadow-lg">
                 {/* Contest Status */}
                 <div className="text-center mb-6">
                     <h1 className="text-2xl font-semibold text-blue-500">
@@ -246,8 +245,9 @@ const SinglePageContest = () => {
                                                     type="text"
                                                     className="input input-bordered w-full mt-2"
                                                     placeholder="Your Answer"
+                                                    name="answer"
                                                 />
-                                                <button className="btn btn-primary"> Submit</button>
+                                                <button type="submit" className="btn btn-primary"> Submit</button>
                                             </div>
                                         </form>
                                     </div>
