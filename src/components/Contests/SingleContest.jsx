@@ -74,17 +74,17 @@ const SinglePageContest = () => {
             const currentTime = new Date();
 
             if (currentTime < contestStartTime) {
-                // hasn't started yet
+                
                 const diff = contestStartTime - currentTime;
                 updateTimeLeft(diff);
                 setStatus("waiting");
             } else if (currentTime >= contestStartTime && currentTime < contestEndTime) {
-                //  running
+                
                 const diff = contestEndTime - currentTime;
                 updateTimeLeft(diff);
                 setStatus("running");
             } else {
-                //  ended
+                
                 setTimeLeft("");
                 setStatus("ended");
             }

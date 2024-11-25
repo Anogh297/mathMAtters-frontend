@@ -19,11 +19,14 @@ import Leaderboard from './components/Leaderboard/Leaderboard.jsx';
 import { Teams } from './components/Teams/Teams.jsx';
 import SetProblem from './components/ProblemPage/SetProblem.jsx';
 import Contests from './components/Contests/Contests.jsx';
-import Profile from './components/Profile/Profile.jsx';
+
 import ModeratorApplication from './components/Moderator/ModeratorApplication.jsx';
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 import SingleContest from './components/Contests/SingleContest.jsx';
 import { About } from './components/Teams/About.jsx';
+import Profile from './components/Profile/Profile.jsx';
+import UserProfile from './components/UserProfile/UserProfile.jsx';
+
 
 // import { Root } from 'postcss';
 
@@ -65,6 +68,14 @@ const router = createBrowserRouter([
         element: <Leaderboard></Leaderboard>
       },
       {
+        path: '/profile',
+        element: <Profile></Profile>
+      },
+      {
+        path: '/userprofile',
+        element: <UserProfile></UserProfile>
+      },
+      {
         path: '/team',
         element: <Teams></Teams>
       },
@@ -88,6 +99,7 @@ const router = createBrowserRouter([
         path: '/application',
         element: <ModeratorApplication></ModeratorApplication>
       },
+    
       {
         path: '/aboutus',
         element: <About></About>
