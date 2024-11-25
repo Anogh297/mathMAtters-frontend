@@ -11,7 +11,7 @@ const SinglePageContest = () => {
     const { user } = useContext(AuthContext);
 
     const contestStartTime = new Date("2024-11-25T18:00:00");
-    const contestDuration = 35 * 60 * 1000; // 5 minutes
+    const contestDuration = 100 * 60 * 1000; // 100 minutes
     const contestEndTime = new Date(contestStartTime.getTime() + contestDuration);
     const [pass, setPass] = useState(false);
     const [r, sr] = useState(false);
@@ -23,6 +23,7 @@ const SinglePageContest = () => {
     const [USER, setUSER] = useState("");
     const [answers, setAnswers] = useState({});
     const [leaderboard, setLeaderboard] = useState([]);
+    const [suck, setSuck] = useState([]);
     const [contest, setContest] = useState([]);
 
     const handlePass = (e) => {
@@ -100,7 +101,7 @@ const SinglePageContest = () => {
 
         const timer = setInterval(updateTimer, 1000);
 
-        return () => clearInterval(timer); // Cleanup on component unmount
+        return () => clearInterval(timer);
     }, [contestStartTime, contestEndTime]);
 
     //  Submission
@@ -123,7 +124,29 @@ const SinglePageContest = () => {
         }
     };
     const sortedSubmissions = submissions.sort((a, b) => b.score - a.score);
-    const sortedLeaderboard = leaderboard.sort((a, b) => b.score - a.score);
+
+    const aggregateContestants = (contestants) => {
+        // aggr. email
+        const aggregatedScores = contestants.reduce((acc, contestant) => {
+            const { email, name, score } = contestant;
+            const numericScore = parseInt(score, 10);
+            if (!acc[email]) {
+                acc[email] = { email, name, totalScore: 0 };
+            }
+            acc[email].totalScore += numericScore;
+            return acc;
+        }, {});
+
+
+        const sortedLeaderboard = Object.values(aggregatedScores).sort(
+            (a, b) => b.totalScore - a.totalScore
+        );
+
+        return sortedLeaderboard;
+    };
+
+    const sortedLeaderboard = aggregateContestants(suck);
+    // console.log(sortedLeaderboard);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -154,15 +177,20 @@ const SinglePageContest = () => {
                 console.log(x)
                 console.log("for the whole contest :", res.data);
                 setLeaderboard(x);
+                // TODO:
+                setSuck(x);
                 setContest(res.data);
 
             })
             .catch(error => console.error(error))
     }, [])
 
+    // console.log("blood sucking website :", suck)
+
     const handleSubmission2 = (e, pro) => {
         e.preventDefault();
-        // const problem = pro;
+        console.log('Submitted the answer');
+
         const answer = parseInt(e.target.answer.value);
         const pr_ans = parseInt(pro.answer);
         console.log('answer', answer);
@@ -171,20 +199,20 @@ const SinglePageContest = () => {
 
         if (pr_ans == answer) {
             console.log('correct answer');
-            const point = 100;
+            const point = 120;
             const contestant = {
                 email: user?.email,
                 name: user?.displayName,
                 score: point,
             }
-            axiosPublic.patch(`/contests/673cc45f6a0f519a48b4335d/contestants`, { contestant })
+            axiosPublic.patch(`/contests/673cc45f6a0f519a48b4335d/contestants/submissions`, { contestant })
                 .then(res => {
                     console.log(res.data)
                     if (res.data.status === "success") {
-                        
+
                         console.log("correct answer + pinged the server");
                     } else if (res.data.status == "error") {
-                        
+
                         console.log("useless conditioning mate dont worry !");
                     }
                 })
@@ -227,19 +255,16 @@ const SinglePageContest = () => {
                                 type="text"
                                 className="input input-bordered w-full mb-4"
                                 placeholder="Your Name"
-
-
                             />
                             {
                                 contest.problems.map((problem, index) => (
-                                    <div key={problem._id} className="mb-6">
+                                    <div key={index} className="mb-6">
                                         <h2 className="text-lg font-semibold text-gray-800">
                                             {problem.title}
                                         </h2>
                                         <p className="text-gray-700">{problem.description}</p>
 
-                                        <form action="" className="text-black" onSubmit={(e) => handleSubmission2(problem, e)
-                                        }>
+                                        <form action="" className="text-black" onSubmit={(e) => handleSubmission2(e, problem)} >
                                             <div className="flex space-x-2 items-center m-auto">
                                                 <input
                                                     type="text"
@@ -254,9 +279,7 @@ const SinglePageContest = () => {
 
                                 ))
                             }
-                            {/* <button className="btn btn-primary w-full" onClick={handleSubmission}>
-                                Submit
-                            </button> */}
+
                         </div>
                     </div>
                 )}
@@ -295,12 +318,12 @@ const SinglePageContest = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {leaderboard.map((submission, index) => (
+                                {sortedLeaderboard.map((submission, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{submission.name}</td>
                                         <td>{submission.email}</td>
-                                        <td>{submission.score}</td>
+                                        <td>{submission?.totalScore}</td>
                                     </tr>
                                 ))}
 
