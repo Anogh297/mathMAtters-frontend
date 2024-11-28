@@ -21,8 +21,8 @@ export const Header = () => {
 
             </h2>
             <p className="text-base text-gray-700 md:text-lg">
-              Let's smash mathematics together! Our platform offers seamless tools for assignment submissions, grading, and fostering mathematical growth with efficiency and ease.
-            </p>
+    Explore a world of mathematics with Math Matters! Solve challenging problems, participate in exciting contests, and access resources designed to enhance your skills and confidence in math.
+</p>
           </div>
           <div className="flex items-center sm:justify-center">
             <button

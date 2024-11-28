@@ -36,7 +36,7 @@ const Navbar = () => {
                                     <div className=" ">
 
                                         <h1 className="leading-tight tracking-tighter">Math <span className="text-red-700 font-bold leading-tight tracking-tighter">MAtters</span></h1>
-                                        <h1 className="text-[11px] ">Let's smash <span className="text-green-600">Ma</span><span className="text-red-600">the</span><span className="text-green-600">matics <span className="text-gray-600">-Mancester Academy</span></span></h1>
+                                        <h1 className="text-[11px] uppercase">Empowering minds through Mathmetics</h1>
                                     </div>
                                 </div>
                             </Link>

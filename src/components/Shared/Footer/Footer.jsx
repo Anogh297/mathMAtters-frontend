@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="uppercase font-semibold flex items-center gap-2 whitespace-nowrap py-3 focus:outline-none lg:flex-1">
               <img
                 className="w-10 h-10 md:w-20 md:h-20"
-                src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/100/external-defence-martial-arts-flaticons-lineal-color-flat-icons.png"
+                src="https://img.icons8.com/officel/80/math.png"
                 alt="Math Matters logo"
               />
               <div>
@@ -52,19 +52,7 @@ export const Footer = () => {
               info@mathmatters.com
             </a>
           </div>
-          <div className="flex">
-            <p className="mr-1 text-gray-800">Address:</p>
-            <a
-              href="https://www.google.com/maps"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Our address"
-              title="Our address"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              312 Lovely Street, NY
-            </a>
-          </div>
+          
         </div>
         <div>
           <span className="text-base font-bold tracking-wide text-gray-900">Social</span>

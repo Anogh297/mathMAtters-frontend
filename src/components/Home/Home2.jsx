@@ -9,9 +9,12 @@ import { MdAnalytics, MdApi, MdDocumentScanner, MdFormatListNumbered, MdOutlineP
 
 
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+
 
 const Item = () => {
     const [isOpen, setIsOpen] = useState(false);
+    
 
     return (
         <div className="border rounded shadow-sm">
@@ -20,7 +23,7 @@ const Item = () => {
                 aria-label="Open item"
                 title="Open item"
                 className="flex items-center justify-between w-full p-4 focus:outline-none"
-                // onClick={() => setIsOpen(!isOpen)}
+            // onClick={() => setIsOpen(!isOpen)}
             >
                 <p className="text-lg font-medium">dsdsdsdss</p>
                 <div className="flex items-center justify-center w-8 h-8 border rounded-full">
@@ -40,7 +43,7 @@ const Item = () => {
                     </svg>
                 </div>
             </button>
-            
+
         </div>
     );
 };
@@ -53,6 +56,7 @@ const Home2 = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [activeIndex, setActiveIndex] = useState(null);
     const [count, setCount] = useState(0);
+    const { user } = useContext(AuthContext);
     return (
 
         <>
@@ -63,8 +67,15 @@ const Home2 = () => {
                         <div className='flex flex-col-reverse lg:flex-row justify-between items-start mt-24'>
                             <div className='w-[1/2] text-left'>
                                 <div className='font-mons'>
-                                    <h1 className='text-[52px]  text- font-medium font-mons'>Become Better <span className='text-orange-500 text-shadow-violet'>Mathematician</span> With<span className='text-red-500 text-shadow-red'>MathMAtters <span className='text-[14px]'><sup><Latex>We know $12^1$ + $23^1$ = {12+23}.</Latex></sup></span></span> </h1>
-                                    <p className='py-5'>The Next Gen platform enhances assignment submission and grading, offering a seamless experience for students and instructors with efficient management</p>
+                                    <h1 className="text-[52px] font-medium font-mons">
+                                        Become a Better <span className="text-orange-500 text-shadow-violet">Mathematician</span> with
+                                        <span className="text-red-500 text-shadow-red"> MathMatters</span>
+
+                                    </h1>
+                                    <p className="py-5">
+                                        Dive into a platform built for the next generation of math enthusiasts! Solve challenging problems, compete in engaging contests, and explore comprehensive resources—all designed to elevate your mathematical journey.
+                                    </p>
+
 
                                     <div className=' space-x-4'>
                                         <Link to='/Plans'>
@@ -109,51 +120,52 @@ const Home2 = () => {
                 </section>
 
 
-                
-                    <section className="bg-white dark:bg-gray-900">
-                        <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-                            <div className="mx-auto max-w-3xl text-center">
-                                <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-                                    Trusted by numberous <span className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600  shadow-pink-600 bg-clip-text text-transparent'>Students </span>🎉
 
-                                </h2>
+                <section className="bg-white dark:bg-gray-900">
+                    <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+                                Trusted by numberous <span className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600  shadow-pink-600 bg-clip-text text-transparent'>Students </span>🎉
+
+                            </h2>
 
 
-                                <p className="mt-4 text-gray-500 sm:text-[17px] dark:text-gray-400">
-                                    Trusted by countless students, our program offers exceptional support and guidance. We are committed to providing reliable and effective solutions to help you achieve your goals with ease and confidence
-                                </p>
-                            </div>
+                            <p className="mt-4 text-gray-500 sm:text-[17px] dark:text-gray-400">
+    Trusted by countless students, Math Matters provides a rich collection of challenging problems, exciting contests, and valuable resources. We are dedicated to guiding you toward mathematical excellence with reliable support and innovative tools.
+</p>
 
-                            <div className="mt-8 sm:mt-12">
-                                <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                                    <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
-                                        <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
-                                            Total Students
-                                        </dt>
-
-                                        <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">2864</dd>
-                                    </div>
-
-                                    <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
-                                        <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
-                                            Official Mentors
-                                        </dt>
-
-                                        <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">67</dd>
-                                    </div>
-
-                                    <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
-                                        <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
-                                            Total Co-ordinators
-                                        </dt>
-
-                                        <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">34</dd>
-                                    </div>
-                                </dl>
-                            </div>
                         </div>
-                    </section>
-                
+
+                        <div className="mt-8 sm:mt-12">
+                            <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
+                                    <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
+                                        Total Students
+                                    </dt>
+
+                                    <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">2864</dd>
+                                </div>
+
+                                <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
+                                    <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
+                                        Official Mentors
+                                    </dt>
+
+                                    <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">67</dd>
+                                </div>
+
+                                <div className="flex flex-col rounded-lg bg-blue-50 px-4 py-8 text-center dark:bg-blue-700/25">
+                                    <dt className="order-last text-lg font-medium text-gray-500 dark:text-white/75">
+                                        Total Co-ordinators
+                                    </dt>
+
+                                    <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl dark:text-blue-50">34</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+
 
 
 
@@ -163,7 +175,7 @@ const Home2 = () => {
                         <div className=" px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                             <div className="sm:flex sm:items-center sm:justify-between mx-auto max-w-7xl">
                                 <div className="text-center sm:text-left">
-                                    <h1 className="text-2xl font-bold text-gray-300 sm:text-3xl">Welcome Back, Saad Ibn AKhter!</h1>
+                                    <h1 className="text-2xl font-bold text-gray-300 sm:text-3xl">Welcome Back, {user?.displayName}!</h1>
 
                                     <p className="mt-1.5 text-sm text-gray-500">Let's go one step further. Ready ? 🎉</p>
                                 </div>
@@ -173,7 +185,7 @@ const Home2 = () => {
                                         className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
                                         type="button"
                                     >
-                                        <span className="text-sm font-medium"> View Assignment </span>
+                                        <span className="text-sm font-medium"> View Problems </span>
 
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +207,7 @@ const Home2 = () => {
                                         className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
                                         type="button"
                                     >
-                                        Submit Response
+                                        Contests
                                     </button>
                                 </div>
                             </div>
@@ -204,9 +216,9 @@ const Home2 = () => {
 
 
 
-                
 
-                    
+
+
 
                 </div>
             </div>
