@@ -129,8 +129,8 @@ const Problem = () => {
                     <h1 className="text-[18px] pb-3 font-medium text-center">Statistics</h1>
                     <hr />
                     <div className="flex justify-between px-4 py-2">
-                        <h1 className="font-bold text-[18px]">Difficulty</h1>
-                        <h1 className='text-green-400'>800</h1>
+                        <h1 className="font-bold text-[18px]">Difficulty </h1>
+                        <h1 className='text-green-400'>:{problem?.rating } Unknown</h1>
                     </div>
                   
                     <div className="flex justify-between px-4 py-2">

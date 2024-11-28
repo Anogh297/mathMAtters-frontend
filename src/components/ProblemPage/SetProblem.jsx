@@ -36,6 +36,7 @@ const SetProblem = () => {
         const difficulty = e.target.difficulty.value;
         const source = e.target.source.value;
         const title = e.target.title.value;
+        const answer = e.target.answer.value;
 
         // const sanitizedData = sanitizeLatex(rawData);
 
@@ -46,6 +47,7 @@ const SetProblem = () => {
             picture: picture,
             difficulty: difficulty,
             source: source,
+            answer: answer,
         };
 
         console.log(problem);
@@ -84,6 +86,17 @@ const SetProblem = () => {
                         </label>
                         <input
                             name='difficulty'
+                            type="text"
+                            className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
+                            placeholder="Easy, Medium, Hard"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-medium text-gray-700">Solution</span>
+                        </label>
+                        <input
+                            name='answer'
                             type="text"
                             className="input input-bordered input-md w-full border-green-300 focus:ring focus:ring-green-200"
                             placeholder="Easy, Medium, Hard"
@@ -151,14 +164,14 @@ const SetProblem = () => {
                     </button>
 
                 </form>
-                <div className="mt-4">
-                {problems.map((problem, index) => (
-                    <div key={index} className="mb-4 text-gray-600">
-                        <Latex>{problem.problem}</Latex>
-                        
-                    </div>
-                ))}
-            </div>
+                {/* <div className="mt-4">
+                    {problems.map((problem, index) => (
+                        <div key={index} className="mb-4 text-gray-600">
+                            <Latex>{problem.problem}</Latex>
+
+                        </div>
+                    ))}
+                </div> */}
 
             </div>
             <ToastContainer />

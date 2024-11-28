@@ -12,31 +12,23 @@ const TopicProblems = () => {
     console.log(type);
 
 
-   
-  useEffect(() => {
-    axiosPublic.get('/math')
-      .then(res => {
-        const all = res.data;
 
-        // Process problems to replace double backslashes with single
-        const processedProblems = all.map((p) => ({
-          ...p,
-          problem: p.problem.replace(/\\\\/g, '\\'), // Replace double backslashes with single
-        }));
+    useEffect(() => {
+        axiosPublic.get('/math')
+            .then(res => {
+                const all = res.data;
+                const processedProblems = all.map((p) => ({
+                    ...p,
+                    problem: p.problem.replace(/\\\\/g, '\\'),
+                }));
+                const topicSpecific = processedProblems.filter(p => p.category.toLowerCase() === type.toLowerCase());
+                setProblems(topicSpecific);
+                console.log("Filtered Problems: ", topicSpecific);
+            })
+            .catch((err) => console.error(err));
+    }, [type]); // Re-run 
 
-        // Filter problems by category based on the 'type' from URL
-        const topicSpecific = processedProblems.filter(p => p.category.toLowerCase() === type.toLowerCase());
 
-        // Update the state with filtered problems
-        setProblems(topicSpecific);
-
-        // Debug log to confirm the correct problems are set
-        console.log("Filtered Problems: ", topicSpecific);
-      })
-      .catch((err) => console.error(err));
-  }, [type]); // Re-run the effect whenever 'type' changes
-
-    // console.log('consoling the results --->', problmes);
 
     return (
         <>
@@ -53,7 +45,7 @@ const TopicProblems = () => {
                             {
                                 problmes.map((problem, index) => <>
                                     <div className='border-[0.5px] max-h-[90px] py-1 px-3 border-orange-200 mb-4'>
-                                        <Link to={`http://localhost:5173/problem/${problem._id}`}>
+                                        <Link to={`/problem/${problem._id}`}>
                                             <div className='flex  mb-4  items-center  border-gray-300 w-full'>
                                                 <div className=' '>
                                                     <img className='h-[35px] w-[35px]' src="https://gonitzoggo.com/assets/images/icons/check2.png" alt="" />
@@ -64,7 +56,7 @@ const TopicProblems = () => {
                                                 </div>
                                             </div>
                                             <div className='text-[15px] '>
-                                                <h1>Difficulty : <span className='badge badge-sm bg-red-200 -translate-y-[2px]'>{problem.difficulty}</span></h1>
+                                                <h1>Difficulty : <span className={`badge badge-sm  bg-sky-50 text-sky-500 -translate-y-[2px]`}>{problem.difficulty}</span></h1>
                                             </div>
                                         </Link>
                                     </div>
