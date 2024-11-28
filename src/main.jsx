@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <ProblemPage></ProblemPage>
       },
       {
-        path: '/topicproblems/:id',
+        path: '/topicproblems/:type',
         element: <TopicProblems></TopicProblems>
       },
       {

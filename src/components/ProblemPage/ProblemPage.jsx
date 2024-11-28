@@ -21,14 +21,14 @@ const ProblemPage = () => {
             
                     setSolved(specificUser);
                     setnum(solved[0]?.solvedProblems.length);
-                    console.log(num);
+                    console.log('number of solved problems ; ',num);
                 }
             })
             .catch(error => {
                 console.error(error);
             })
     }, [])
-    // console.log('sososoo',solved[0].solvedProblems.length);
+    console.log('sososoo',solved[0]?.solvedProblems.length);
     // const len = solved[0].solvedProblems.length;
     useEffect(() => {
         ax.get('/math')
@@ -71,7 +71,7 @@ const ProblemPage = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/topicproblems/adhock'>
+                    <Link to='/topicproblems/angle-chasing'>
                         <div className='flex py-4 mb-4  items-center p-4 border-2 border-gray-300 w-full'>
                             <div className=' h-[100px]'>
                                 <img className='max-h-full max-w-full' src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/icons/math/anglechasing.svg" alt="" />
@@ -82,7 +82,7 @@ const ProblemPage = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/topicproblems/algebra'>
+                    <Link to='/topicproblems/counting'>
                         <div className='flex py-4 mb-4  items-center p-4 border-2 border-gray-300 w-full'>
                             <div className=' h-[100px]'>
                                 <img className='max-h-full max-w-full' src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/icons/math/counting.svg" alt="" />
@@ -170,7 +170,7 @@ const ProblemPage = () => {
                             <img className='max-h-[90%] max-w-[90%]' src="https://gzcdn.sgp1.cdn.digitaloceanspaces.com/assets/v2.9.3/images/solved.svg" alt="" />
                         </div>
                         <div className='ml-8'>
-                            <h1 className='text-[24px] font-medium'>{num} / {total.length}</h1>
+                            <h1 className='text-[24px] font-medium'>{solved[0]?.solvedProblems.length} / {total.length}</h1>
                             <h1>You solved</h1>
                         </div>
 

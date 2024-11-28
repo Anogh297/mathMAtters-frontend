@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
 import useAxiosPublic from '../hooks/useAxiosPublic';
@@ -7,26 +7,42 @@ import useAxiosPublic from '../hooks/useAxiosPublic';
 const TopicProblems = () => {
     const [problmes, setProblems] = useState([]);
     const axiosPublic = useAxiosPublic();
-    useEffect(() => {
-        axiosPublic.get('/math')
-            .then((res) => {
-                const processedProblems = res.data.map((p) => ({
-                    ...p,
-                    problem: p.problem.replace(/\\\\/g, '\\'), // Replace double backslashes with single
-                }));
 
-                setProblems(processedProblems);
-            })
-            .catch((err) => console.error(err));
-    }, []);
+    const { type } = useParams();
+    console.log(type);
 
-    console.log('consoling the results --->', problmes);
+
+   
+  useEffect(() => {
+    axiosPublic.get('/math')
+      .then(res => {
+        const all = res.data;
+
+        // Process problems to replace double backslashes with single
+        const processedProblems = all.map((p) => ({
+          ...p,
+          problem: p.problem.replace(/\\\\/g, '\\'), // Replace double backslashes with single
+        }));
+
+        // Filter problems by category based on the 'type' from URL
+        const topicSpecific = processedProblems.filter(p => p.category.toLowerCase() === type.toLowerCase());
+
+        // Update the state with filtered problems
+        setProblems(topicSpecific);
+
+        // Debug log to confirm the correct problems are set
+        console.log("Filtered Problems: ", topicSpecific);
+      })
+      .catch((err) => console.error(err));
+  }, [type]); // Re-run the effect whenever 'type' changes
+
+    // console.log('consoling the results --->', problmes);
 
     return (
         <>
             <div className='font-mons max-w-6xl mx-auto'>
                 <div className='text-center p-3'>
-                    <h1 className='text-[28px] font-medium pb-4'>Algebra Problems</h1>
+                    <h1 className='text-[28px] font-medium pb-4'><span className='capitalize'>{type}</span> Problems</h1>
                     <div className='border-[1px] border-green-300'>
                         <hr />
                     </div>
